@@ -1,4 +1,4 @@
-##Getting Started
+## Getting Started
 
 - Install Firefox
 - Install Python 3+
