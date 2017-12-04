@@ -1,9 +1,12 @@
+#!/usr/bin/python
+# -*- coding: <encoding name> -*-
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-browser = webdriver.Firefox()
+browser = webdriver.Firefox(executable_path='./geckodriver')
 
 browser.get('http://www.bing.com/')
 
