@@ -68,9 +68,9 @@ for course in courses:
 
 print('--------- Unfinished Lessons ---------') 
 for lesson in videoLessons:
-    print(datetime.now() + '    ' + lesson[0] + ' > ' + lesson[1] + ' ...')
+    print(datetime.now(), '    ', lesson[0], ' > ', lesson[1], ' ...')
     browser.get(lesson[2])
     WebDriverWait(browser, 60 * 60).until(EC.presence_of_element_located((By.CLASS_NAME, 'btn-green')))
-    print(datetime.now() + '    Done')
+    print(datetime.now(), '    ', 'Done')
         
 #browser.quit()
