@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import platform
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -11,7 +13,9 @@ user = ''
 password = ''
 
 # Maybe you need to set permission for drivers
-browser = webdriver.Firefox(executable_path='./geckodriver')
+isWindows = platform.system() == 'Windows'
+driverPath = './geckodriver.exe' if isWindows else './geckodriver'
+browser = webdriver.Firefox(executable_path=driverPath)
 browser.get('http://www.ahcjzx.cn/portal/')
 
 elemName = browser.find_element_by_name('userKey')
@@ -64,8 +68,9 @@ for course in courses:
 
 print('--------- Unfinished Lessons ---------') 
 for lesson in videoLessons:
-    print(lesson[0] + ' > ' + lesson[1] + ' ...')
+    print(datetime.now() + '    ' + lesson[0] + ' > ' + lesson[1] + ' ...')
     browser.get(lesson[2])
     WebDriverWait(browser, 60 * 60).until(EC.presence_of_element_located((By.CLASS_NAME, 'btn-green')))
+    print(datetime.now() + '    Done')
         
 #browser.quit()
