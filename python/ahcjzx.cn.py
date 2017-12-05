@@ -32,6 +32,8 @@ WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 
 baseWindow = browser.current_window_handle
 videoLessons = []
 
+print('============ 剩余课程 ===========') 
+
 courses = browser.find_elements_by_class_name('lesson')
 for course in courses:
     des = course.find_elements_by_class_name('lesson-schedule')
@@ -39,7 +41,7 @@ for course in courses:
         # skip completed courses
         continue
 
-    print('============ ' + des[0].get_attribute('title') + ' ===========')
+    print('>>> ' + des[0].get_attribute('title'))
 
     # go to sourse detail page
     courseName = course.find_element_by_class_name('lesson-name').get_attribute('title')
@@ -66,11 +68,12 @@ for course in courses:
     browser.close()
     browser.switch_to_window(baseWindow)
 
-print('--------- Unfinished Lessons ---------') 
+print('')
+print('============ 开始学习 ===========') 
 for lesson in videoLessons:
-    print(datetime.now(), '    ', lesson[0], ' > ', lesson[1], ' ...')
+    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S %p') + '    ' + lesson[0] + '-' + lesson[1])
     browser.get(lesson[2])
     WebDriverWait(browser, 60 * 60).until(EC.presence_of_element_located((By.CLASS_NAME, 'btn-green')))
-    print(datetime.now(), '    ', 'Done')
+    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S %p') + '    ' + '✔︎')
         
 #browser.quit()
