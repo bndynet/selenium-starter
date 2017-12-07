@@ -14,7 +14,7 @@ password = ''
 
 # Maybe you need to set permission for drivers
 isWindows = platform.system() == 'Windows'
-driverPath = './geckodriver.exe' if isWindows else './geckodriver'
+driverPath = '../drivers/geckodriver.exe' if isWindows else '../drivers/geckodriver'
 browser = webdriver.Firefox(executable_path=driverPath)
 browser.get('http://www.ahcjzx.cn/portal/')
 
