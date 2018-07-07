@@ -94,6 +94,8 @@ def start_learning(course):
     print('')
     print('============ 开始学习 ===========') 
     for lesson in course[4]:
+        if lesson[2]:
+            continue
         print_start(course[1] + '-' + lesson[0])
         browser.get(lesson[1])
         WebDriverWait(browser, 60 * 60).until(EC.presence_of_element_located((By.CLASS_NAME, 'btn-green')))
