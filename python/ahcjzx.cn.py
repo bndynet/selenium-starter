@@ -82,7 +82,6 @@ def get_course_lessions(course):
                 print('    ' + lessonName)
             videoLessons.append((lessonName, lessonUrl, lessonIsDone))
 
-    print_done()
     return videoLessons
 
 def start_learning(course):
@@ -102,7 +101,7 @@ for course in courses:
 
 for course in finalCourses:
     print('')
-    print('============ 开始学习 ===========') 
+    print('============ 开始视频学习 ===========') 
     if not course[2]:
         start_learning(course)
 
